@@ -1,0 +1,10 @@
+node_modules/
+dist/
+output/
+.playwright-cli/
+art/
+.env
+.env.*
+!.env.example
+.wrangler/
+*.log

@@ -1,0 +1,105 @@
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:'Microsoft YaHei',sans-serif}body{min-height:100dvh;display:grid;place-items:center;background:radial-gradient(ellipse at top,#633526,#1e1315);padding:6px;color:#7e4b30}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #ffdf99;outline-offset:2px}button:active{transform:translateY(2px)}[hidden]{display:none!important}main{position:relative;width:min(480px,100%,calc((100dvh - 12px)*.49));background:#53241d url('/assets/ui/theatre-background.png') center/100% 100%;border:1px solid #cb965b66;border-radius:19px;overflow:hidden;box-shadow:0 20px 65px #0008}header{height:104px;padding:0 55px;display:grid;place-items:center}h1{margin:0;width:100%;line-height:0}h1 img{display:block;width:100%;height:104px;object-fit:contain}.edition{display:none}.bar{height:65px;margin:0 94px 0 20px;display:flex;gap:5px;align-items:center}.score-card{flex:1;min-width:0;height:61px;background:url('/assets/ui/hud-panel.png') center/100% 100%;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:11px;font-family:'KaiTi','Microsoft YaHei',serif;font-weight:bold}.score-card b{font:800 25px Georgia,serif;color:#af4936;line-height:1.2}.best:before{content:'♛';position:absolute;top:97px;font-size:22px;color:#efbb59;text-shadow:0 2px #995728}.bar button{position:absolute;top:24px;border:0;padding:0;background:none;width:51px;height:54px}.bar button img{width:100%;height:100%;object-fit:contain}#restart{left:12px}#pause{right:12px}#next-live{position:absolute;top:108px;right:15px;width:73px;height:66px;background:url('/assets/ui/hud-panel.png') center/100% 100%;display:grid;place-items:center;padding:20px 10px 6px}#next-live:before{content:'下一件';position:absolute;top:8px;left:0;right:0;text-align:center;font-size:11px;font-family:'KaiTi';font-weight:bold}#next-live img{max-width:35px;max-height:34px;object-fit:contain}#game{width:100%;aspect-ratio:420/690;touch-action:none;margin-top:-48px}canvas{display:block}#drop{position:absolute;bottom:24px;left:calc(50% - 67px);width:134px;height:52px;border:0;background:url('/assets/ui/drop-button.png') center/contain no-repeat;font-size:0;color:transparent}footer{font-size:7px;text-align:center;color:#f8d4a580;padding:0 4px 7px;margin-top:-7px}.overlay{position:absolute;inset:0;z-index:20;background:#35151dbb;backdrop-filter:blur(6px);display:grid;place-items:center;padding:22px}.dialog{width:100%;text-align:center;border:3px solid #ecc88e;border-radius:24px;padding:23px 18px;background:linear-gradient(#fff0ce,#edc294);box-shadow:0 10px 45px #160b0c88}.dialog small{font-size:9px;letter-spacing:2px}.dialog h2{font:800 24px 'KaiTi',serif}.dialog p{font-size:12px;line-height:1.7}.dialog button{display:block;width:100%;border:2px solid #ffdfad;border-radius:15px;padding:12px;margin-top:12px;background:linear-gradient(#eead7d,#c76f50);color:#fff0d5;font-weight:bold;box-shadow:0 3px #8f4936}.dialog button.secondary{background:#f6dfba;color:#875035}#result-art{width:100%;max-height:240px;object-fit:cover;border-radius:12px}#result-stats{display:flex;justify-content:space-around;margin-top:12px;font-size:12px}#result-stats strong{display:block;font:800 27px Georgia;color:#ac5038}#result-emblem{font-size:30px;color:#b87b39}@media(max-height:720px){header,h1 img{height:86px}.bar{height:58px}.score-card{height:54px}.score-card b{font-size:22px}#next-live{top:89px;height:59px}.best:before{top:81px}.bar button{top:17px;width:43px;height:46px}#game{margin-top:-42px}}
+
+.overlay:not(.result) .dialog{position:relative;aspect-ratio:.78;background:url('/assets/ui/pause-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;padding:0;color:#855034;display:flex;flex-direction:column;justify-content:flex-end;padding:0 10% 11%}
+.overlay:not(.result) #result-emblem,.overlay:not(.result) .dialog small,.overlay:not(.result) #dialog-title{display:none}
+.overlay:not(.result) #dialog-copy{margin:0 0 8px;font-family:'KaiTi',serif;font-weight:bold;font-size:15px}
+.overlay:not(.result) .dialog #resume{background:linear-gradient(#f39480,#ce574c);border:2px solid #ffd4a4;color:#fff2d1;font-size:19px;box-shadow:inset 0 2px #ffcbab,0 4px #9c4933;border-radius:22px;padding:13px 4px;text-shadow:0 2px #a45139}
+.overlay:not(.result) .dialog #play-again{background:linear-gradient(#ffe0a0,#e8ad58);font-size:18px;border-radius:20px;border-color:#fff0ba;color:#81472d;box-shadow:0 4px #ba7941;padding:11px 4px}
+.dialog #dialog-close{position:absolute;right:2%;top:8%;width:35px;height:35px;border-radius:50%;padding:0;margin:0;font-size:29px;line-height:29px;border:2px solid #ffcc99;background:linear-gradient(#ed9d76,#bd5c43);color:#fff1d5;box-shadow:0 3px #87422c}
+.result #dialog-close{display:none}
+
+.overlay:not(.result) #dialog-copy{display:none}
+
+/* Fixed lettering belongs to the artwork; numbers have a reserved baseline. */
+.score-card{background-image:url('/assets/ui/current-score.png');justify-content:flex-end;padding:0 6px 9px;font-size:0;height:63px}.score-card.best{background-image:url('/assets/ui/best-score.png')}.best:before{display:none}.score-card b{font:800 24px Georgia,serif;letter-spacing:0;line-height:1;font-variant-numeric:tabular-nums}
+#next-live{background-image:url('/assets/ui/next-card.png');background-size:100% 100%;height:70px;padding:25px 10px 8px}#next-live:before{display:none}
+header{padding:0 57px}#game{position:relative;z-index:0}.bar,#next-live,header{position:relative;z-index:2}#next-live{position:absolute}
+@media(max-height:720px){.score-card{height:53px;padding-bottom:7px}.score-card b{font-size:21px}}
+
+.bar{position:static}.bar button{z-index:5}
+
+.overlay:not(.result){display:flex;flex-direction:column;justify-content:center;gap:10px}.overlay:not(.result) .dialog{flex-shrink:0;width:min(100%,300px)}.sound-settings{width:min(100%,300px);padding:12px 17px;background:#fff0d4;border:2px solid #deb37c;border-radius:17px;color:#805033;box-shadow:0 4px #783f2b;font-size:13px}.sound-settings>label:first-child{display:flex;justify-content:space-between;font-weight:700}.sound-settings input[type=range]{width:100%;accent-color:#b45e44;margin:10px 0}.mute{display:flex;align-items:center;gap:5px}.mute input{accent-color:#b45e44}.result .sound-settings{display:none}@media(max-height:720px){.overlay:not(.result) .dialog{width:min(100%,235px)}.sound-settings{width:min(100%,235px);padding:8px 12px}.overlay:not(.result) .dialog #resume,.overlay:not(.result) .dialog #play-again{font-size:14px;padding:8px;margin-top:7px}}
+
+/* One illustrated pause sheet with an integrated sound compartment. */
+#game{aspect-ratio:444/690}
+.overlay:not(.result) .dialog{width:min(100%,330px);aspect-ratio:.68;background-image:url('/assets/ui/pause-settings-panel.png');padding:0;display:block}
+.overlay:not(.result) .sound-settings{position:absolute;left:13%;right:13%;top:49%;width:auto;height:17%;padding:0;background:none;border:0;box-shadow:none;border-radius:0;font-size:12px;text-align:left}
+.sound-settings input[type=range]{display:block;height:15px;margin:7px 0 5px;appearance:none;background:transparent;cursor:pointer}
+.sound-settings input[type=range]::-webkit-slider-runnable-track{height:7px;background:#dfb888;border-radius:9px;box-shadow:inset 0 1px 3px #9f704455}
+.sound-settings input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;margin-top:-7px;border:2px solid #ffe5ae;border-radius:50%;background:linear-gradient(#e6a46c,#b76443);box-shadow:0 2px 3px #86502b55}
+.overlay:not(.result) .dialog #resume,.overlay:not(.result) .dialog #play-again{position:absolute;left:12%;width:76%;height:10%;margin:0;padding:0;font-size:17px;border-radius:19px}
+.overlay:not(.result) .dialog #resume{top:72%}.overlay:not(.result) .dialog #play-again{top:84%}
+.overlay:not(.result) .dialog #dialog-close{top:8%;right:5%}
+@media(max-height:720px){.overlay:not(.result) .dialog{width:min(100%,270px)}.overlay:not(.result) .sound-settings{font-size:11px}.overlay:not(.result) .dialog #resume,.overlay:not(.result) .dialog #play-again{font-size:15px}}
+
+.overlay:not(.result) .sound-settings{top:52%;height:15%}
+
+.feedback-options{display:flex;justify-content:space-between;font-size:11px;margin-top:5px}.feedback-options label{display:flex;align-items:center;gap:2px}.feedback-options input{accent-color:#ac6749}.overlay:not(.result) .sound-settings{top:50%;height:19%}.sound-settings input[type=range]{margin:5px 0 3px}
+
+/* Unified inset controls: tactile switches instead of browser checkboxes. */
+.overlay:not(.result) .sound-settings{top:50%;left:13%;right:13%;height:19%;font-size:12px}
+.sound-settings .mute,.feedback-options label{display:flex;align-items:center;justify-content:space-between;flex-direction:row-reverse;min-height:23px;font-size:11px;font-weight:700;gap:5px}
+.sound-settings .mute{width:100%;border-bottom:1px solid #c7955c30;padding-bottom:3px;margin-bottom:3px}
+.feedback-options{display:flex;gap:10px;margin-top:0}.feedback-options label{flex:1}
+.sound-settings input[type=checkbox]{appearance:none;flex:0 0 30px;width:30px;height:17px;border:1px solid #bd8c55;border-radius:12px;background:linear-gradient(#d6bb90,#ead6b4);box-shadow:inset 0 1px 3px #70462f44;margin:0;position:relative;cursor:pointer;transition:background .15s}
+.sound-settings input[type=checkbox]:before{content:'';position:absolute;top:1px;left:1px;width:13px;height:13px;border-radius:50%;background:linear-gradient(#fff6db,#e9bd7c);box-shadow:0 1px 2px #80513666;transition:transform .15s}
+.sound-settings input[type=checkbox]:checked{background:linear-gradient(#dd9970,#bf674b);border-color:#a46040}.sound-settings input[type=checkbox]:checked:before{transform:translateX(13px)}
+.sound-settings input:focus-visible{outline:2px solid #a35b38;outline-offset:3px}
+.result .dialog{position:relative;aspect-ratio:.70;width:min(100%,340px);border:0;border-radius:0;box-shadow:none;background:url('/assets/ui/result-panel.png') center/100% 100% no-repeat;padding:0}
+.result #result-emblem,.result .dialog small{display:none}
+.result #dialog-title{position:absolute;top:10%;left:10%;width:80%;margin:0;color:#fff0c6;font:900 24px 'KaiTi',serif;letter-spacing:2px;text-shadow:0 2px #9c4936}
+.result #result-art{position:absolute;top:23%;left:12%;width:76%;height:35%;max-height:none;object-fit:cover;border:3px solid #e7b777;border-radius:15px;box-shadow:0 3px 0 #b8784544}
+.result #result-stats{position:absolute;top:61%;left:12%;width:76%;margin:0;padding:7px 0;background:#f4d7a5aa;border-top:1px solid #d4a363;border-bottom:1px solid #d4a363;font:700 11px 'Microsoft YaHei',sans-serif}.result #result-stats>div{width:50%}.result #result-stats>div+div{border-left:1px solid #d4a36388}.result #result-stats strong{font-size:26px;margin-top:3px}
+.result #dialog-copy{position:absolute;top:75%;left:13%;width:74%;font-size:10px;line-height:1.4;margin:0;color:#895333}
+.result .dialog #play-again{position:absolute;top:83%;left:15%;width:70%;height:9%;margin:0;padding:0;border:2px solid #ffe0a5;border-radius:20px;background:linear-gradient(#f5bf77,#db9351);box-shadow:inset 0 2px #fff1bd,0 4px #9b5e36;color:#7a4028;font:800 20px 'KaiTi',serif;text-shadow:0 1px #ffe4a4}
+@media(max-height:720px){.result .dialog{width:min(100%,280px)}.result #dialog-title{font-size:20px}.result #result-stats{padding:4px 0}.result #result-stats strong{font-size:22px}.sound-settings .mute,.feedback-options label{font-size:10px;min-height:19px}.sound-settings input[type=range]{margin:3px 0}.sound-settings input[type=checkbox]{transform:scale(.9);transform-origin:right center}}
+
+.result #dialog-title{top:15%;font-size:23px}
+
+/* Shared top and bottom edges for the three HUD cards. */
+#next-live{top:105px;height:63px;padding:22px 10px 6px}#next-live img{max-height:30px}
+@media(max-height:720px){#next-live{top:88px;height:53px;padding-top:18px}#next-live img{max-height:26px}}
+
+/* Consistent cream-paper HUD spacing and quieter number hierarchy. */
+.bar{margin-left:18px;margin-right:96px;gap:7px}.score-card b{font-size:24px;transform-origin:center center}#next-live{right:15px;width:74px;padding:24px 12px 6px}#next-live img{max-width:30px;max-height:28px}
+@media(max-height:720px){#next-live{padding:21px 12px 5px}#next-live img{max-height:24px}.score-card b{font-size:21px}}
+
+#next-live{border:2px solid #d7a45c;border-radius:12px;box-shadow:inset 0 0 0 1px #ffe7b5,0 2px 2px #51221766;background-color:#f9e8c8;background-clip:padding-box}
+
+footer{display:flex;flex-direction:column;align-items:center;gap:3px;padding-bottom:6px}#support-open{border:0;background:none;color:#f4d2a1;padding:5px 12px;font-size:11px;text-decoration:underline;text-underline-offset:3px;min-height:27px}#drop{bottom:49px}
+#support-dialog{position:fixed;margin:auto;width:min(390px,calc(100vw - 28px));max-height:calc(100dvh - 24px);overflow:auto;border:2px solid #dfb577;border-radius:23px;background:linear-gradient(#fff1d5,#f3d6ac);padding:22px 18px 18px;color:#815133;text-align:center;box-shadow:0 20px 70px #1e0b0ba8}
+#support-dialog::backdrop{background:#29131bc9;backdrop-filter:blur(5px)}#support-close{position:absolute;right:9px;top:8px;border:1px solid #dba36d;border-radius:50%;background:#f6d9af;color:#895033;width:34px;height:34px;font-size:25px;line-height:1}#support-dialog h2{font-family:'KaiTi','Microsoft YaHei',serif;font-size:25px;margin:6px 20px 8px}#support-dialog p{font-size:12px;line-height:1.6;margin:8px 0}#support-image{display:block;width:100%;height:auto;margin:12px auto;border-radius:8px}#support-save{display:inline-block;padding:10px 23px;border:1px solid #d49c5b;border-radius:14px;background:#f5cb88;color:#764328;font-size:14px;font-weight:bold;text-decoration:none}#support-dialog small{display:block;margin-top:12px;font-size:11px;color:#946d50}@media(max-height:600px){#support-image{width:min(100%,260px)}}
+
+footer{gap:7px;padding:0 14px 8px}#support-open{display:flex;align-items:center;justify-content:center;gap:10px;width:min(250px,90%);min-height:44px;padding:6px 14px;border:2px solid #ffe2a3;border-radius:17px;background:linear-gradient(120deg,#fff0c9,#f4cb85);color:#87482e;text-decoration:none;font-size:14px;font-weight:800;box-shadow:inset 0 2px 2px #fff8e5,0 3px 0 #a6663b,0 5px 12px #38150c55}#support-open .support-heart{display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#c56e51;color:#ffecc4;font-size:18px;box-shadow:inset 0 2px #e99f79}#support-open small{display:block;font-size:9px;font-weight:500;letter-spacing:2px;color:#a56c43;margin-top:1px}#support-open .support-arrow{font-size:24px;color:#b27846;margin-left:4px}#support-open:hover{filter:brightness(1.06)}#drop{bottom:72px}
+
+/* Appreciation occupies the former drop action; gameplay uses the board. */
+footer{padding:0 5px 7px;gap:0}#support-open{position:absolute;z-index:4;bottom:22px;left:50%;transform:translateX(-50%);width:min(218px,65%);min-height:49px;overflow:hidden;isolation:isolate;gap:10px;border:2px solid #ffe3a3;border-radius:22px;background:linear-gradient(110deg,#ffe6a7,#f3b9aa,#f8cf78,#fff1bc,#f2b4a8,#ffe6a7);background-size:300% 100%;animation:support-colors 7s ease-in-out infinite;box-shadow:inset 0 2px 3px #fff6d2,0 3px 0 #a8653c,0 0 16px #ffcd7650;font-size:17px;color:#87432e;text-shadow:0 1px #fff2ce}
+#support-open:after{content:'';pointer-events:none;position:absolute;inset:-40% auto -40% -60%;width:35%;background:linear-gradient(90deg,transparent,#fff8dfb0,transparent);transform:skewX(-22deg);animation:support-shine 4.8s ease-in-out infinite;z-index:-1}#support-open small{font-size:10px;letter-spacing:1px;color:#98573b}#support-open .support-heart{background:#c96f57;width:28px;height:28px}#support-open:active{transform:translate(-50%,2px)}
+@keyframes support-colors{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}@keyframes support-shine{0%,55%{left:-60%}85%,100%{left:135%}}
+@media(prefers-reduced-motion:reduce){#support-open,#support-open:after{animation:none}#support-open:after{display:none}}body:has(#reduced-motion:checked) #support-open,body:has(#reduced-motion:checked) #support-open:after{animation:none}body:has(#reduced-motion:checked) #support-open:after{display:none}
+
+/* Room below the board for the appreciation action. */
+main{padding-bottom:18px}#support-open{bottom:14px}
+
+/* Illustrated appreciation card with an unchanged, clearly framed QR code. */
+#support-dialog{width:min(390px,calc(100vw - 24px));max-height:calc(100dvh - 16px);padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow-y:auto;overflow-x:hidden;color:#835035}
+.support-card{position:relative;width:100%;aspect-ratio:.70;background:url('/assets/ui/result-panel.png') center/100% 100% no-repeat;text-align:center}
+#support-dialog h2{position:absolute;top:14.5%;left:10%;width:80%;margin:0;font:900 clamp(21px,6vw,28px) 'KaiTi','Microsoft YaHei',serif;letter-spacing:2px;color:#fff1ca;text-shadow:0 2px #a55036}
+#support-dialog .support-subtitle{position:absolute;top:24%;left:10%;width:80%;margin:0;font-size:12px;color:#9b6a46}
+#support-close{top:8%;right:8%;width:33px;height:33px;border:2px solid #ffe1ac;background:linear-gradient(#edac80,#bb6448);box-shadow:0 3px #975332;color:#fff0cb;z-index:2}
+.support-code-frame{position:absolute;top:30%;left:22%;width:56%;aspect-ratio:1;padding:7px;border:2px solid #e5ba78;border-radius:17px;background:#fff;box-shadow:0 4px 0 #ba874333,0 7px 16px #ac78331c}
+.support-code-crop{position:relative;width:100%;height:100%;overflow:hidden;background:#fff}
+#support-image{position:absolute;width:239.631%;max-width:none;height:auto;left:-69.816%;top:-37.558%;margin:0;border-radius:0}
+#support-dialog .support-tip{position:absolute;top:71%;left:10%;width:80%;margin:0;font-size:12px;font-weight:700;color:#8d5435}
+#support-save{position:absolute;top:77%;left:18%;width:64%;height:9%;display:grid;place-items:center;padding:0;border:2px solid #ffe6b3;border-radius:20px;background:linear-gradient(#f8d38b,#e3a256);box-shadow:inset 0 2px #fff0c4,0 3px #ad7041;color:#7c442b;font-size:17px;text-shadow:0 1px #ffe6b5}
+#support-dialog small{position:absolute;top:88%;left:12%;width:76%;margin:0;font-size:10px;line-height:1.5;color:#996e47}
+@media(max-height:650px){#support-dialog{width:min(340px,calc((100dvh - 16px)*.70))}#support-dialog h2{font-size:21px}#support-dialog .support-subtitle,#support-dialog .support-tip{font-size:10px}#support-save{font-size:15px}#support-dialog small{font-size:8px}}
+
+/* Geometric close mark: centered independently of font metrics. */
+.dialog #dialog-close{font-size:0;line-height:0;display:grid;place-items:center;padding:0}
+.dialog #dialog-close:before,.dialog #dialog-close:after{content:'';position:absolute;left:50%;top:50%;width:17px;height:3px;border-radius:3px;background:#fff0d5;transform:translate(-50%,-50%) rotate(45deg)}
+.dialog #dialog-close:after{transform:translate(-50%,-50%) rotate(-45deg)}
+
+.result .dialog #share-result,.result .dialog #play-again{position:absolute;top:83%;width:34%;height:9%;padding:0;margin:0;font:800 16px 'Microsoft YaHei',sans-serif;border:2px solid #ffe4b0;border-radius:17px;box-shadow:inset 0 2px #ffebba,0 3px #9e623b}
+.result .dialog #share-result{left:14%;background:linear-gradient(#f2a37c,#ca694d);color:#fff1cf}.result .dialog #play-again{left:52%;background:linear-gradient(#f5cc8a,#e0a05b);color:#804a2e}
+#share-dialog{width:min(440px,calc(100vw - 24px));max-height:calc(100dvh - 24px);margin:auto;padding:18px;border:2px solid #e1b477;border-radius:22px;background:#fff0d4;color:#855136;overflow:auto;box-shadow:0 15px 65px #25101999}#share-dialog::backdrop{background:#29131bcc;backdrop-filter:blur(5px)}#share-title{margin:3px 30px 8px;font:800 23px 'KaiTi',serif;text-align:center}#share-status{font-size:12px;text-align:center;line-height:1.6;margin:8px 0}#share-close{position:absolute;right:9px;top:8px;width:33px;height:33px;border:1px solid #d4a36b;border-radius:50%;background:#f6d7a7;color:#855136;font-size:24px}#share-preview{display:block;width:100%;height:auto;border-radius:12px}.share-actions{position:sticky;bottom:-18px;display:flex;gap:10px;padding:12px 0 7px;background:#fff0d4}.share-actions>*{flex:1;display:grid;place-items:center;padding:12px 4px;text-decoration:none;border:1px solid #d8a35e;border-radius:14px;background:linear-gradient(#f7dba3,#eebd75);color:#80492e;font-size:14px;font-weight:700}

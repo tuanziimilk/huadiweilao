@@ -1,0 +1,1 @@
+{"name":"old-stories-suika","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"vite --host 0.0.0.0","build":"vite build && node scripts/build-pages.mjs","preview":"vite preview --host 0.0.0.0"},"dependencies":{"phaser":"^3.90.0","qrcode":"^1.5.4","vite":"^6.1.0"}}

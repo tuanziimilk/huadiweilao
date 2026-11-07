@@ -1,0 +1,35 @@
+/* Red curtain stage, with real interactive UI layered over the background plate. */
+body{background:radial-gradient(ellipse at top,#9c4632,#3e211d)}main{border-color:#dba16e;box-shadow:0 18px 65px #1f0e0c88,inset 0 0 24px #ffce8055}header{position:relative;justify-content:center;padding:9px 50px 4px}h1{background:none;border:0;box-shadow:none;transform:rotate(-2deg);font-size:29px;padding:7px 0;color:#ffebc6;text-shadow:0 2px 0 #a8643b,0 4px 2px #693723;letter-spacing:4px;text-align:center}h1 span{margin:5px 0 -9px;background:linear-gradient(#ffe59e,#eeb65c);border:1px solid #ffe7af;box-shadow:0 3px 0 #9a542d77;font-size:13px;padding:5px 12px;letter-spacing:4px}.edition{display:none}.bar{gap:7px}.score-card{position:relative;border:2px solid #efc796;border-radius:11px;background:linear-gradient(115deg,#ffecc9,#f1c48a);box-shadow:inset 0 2px 4px #fff7e1,0 3px 4px #5b241d55}.score-card:before{content:'';position:absolute;width:16px;height:7px;background:#efc790cc;transform:rotate(-42deg);left:-6px;top:0}.score-card b{color:#ac5638}.bar button{background:linear-gradient(#f0a77c,#ce7155);border-color:#f5c18c;box-shadow:inset 0 2px 3px #ffd3a6,0 3px 0 #70342680}footer{color:#f7d7ad;font-size:8px;text-shadow:0 1px #754329}#drop{background:linear-gradient(#ffe6a8,#edba66);border:2px solid #f4d49b;color:#805035}.dialog{border-color:#ffe3b8;background:linear-gradient(#fff0d1,#efc48d)}.dialog small{color:#a56744}@media(max-height:650px){h1{font-size:24px}}
+
+/* Illustrated result cards, with live scores and controls. */
+[hidden]{display:none!important}
+.overlay.result{padding:12px;background:radial-gradient(ellipse at 50% 35%,#aa503466,#321719d9);backdrop-filter:blur(6px);overflow:auto}
+.result .dialog{position:relative;isolation:isolate;overflow:hidden;padding:12px 14px 16px;border:2px solid #f6cf98;border-radius:24px;background:radial-gradient(ellipse at top,#bd6746,#71352d 75%);box-shadow:inset 0 0 25px #ffc07844,0 15px 45px #200a0baa;color:#fff0d0}
+.result .dialog:before{content:'';position:absolute;inset:0;z-index:-1;opacity:.18;background:repeating-conic-gradient(from -8deg at 50% 38%,#ffe7a4 0deg 12deg,transparent 12deg 25deg)}
+#result-emblem{font-size:33px;line-height:1;color:#ffd56c;text-shadow:0 3px #a35a2a,0 0 16px #ffc85c}
+.result .dialog small{display:block;color:#ffdeb1;font-size:9px;letter-spacing:2px;margin:4px 0 8px}
+.result .dialog h2{position:relative;z-index:1;margin:0 7px -5px;padding:9px 4px;font-size:clamp(22px,6vw,31px);letter-spacing:3px;color:#fff2ce;border:2px solid #f9b17c;border-radius:18px 18px 24px 24px;background:linear-gradient(#f7a177,#d75c4f);box-shadow:inset 0 3px 3px #ffd8a8,0 5px 0 #8c3b2d,0 8px 12px #401c2544;text-shadow:0 3px #ad5039;transform:rotate(-2deg)}
+#result-art{display:block;width:100%;height:clamp(170px,32dvh,310px);object-fit:cover;object-position:center 51%;border:6px solid #ffe5b8;border-radius:12px;margin:0 auto;box-shadow:0 5px 0 #9c573c,0 8px 18px #2e151d66}
+.result .dialog p{font-size:11px;line-height:1.5;color:#ffe4b8;margin:12px 0 9px}
+#result-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:linear-gradient(120deg,#ffeac5,#f3c38c);border:3px solid #f2bd7e;border-radius:17px;box-shadow:inset 0 2px 4px #fff6dd,0 4px 0 #91442e;padding:10px 3px;color:#915036}
+#result-stats>div+div{border-left:1px solid #d69b6566}
+#result-stats span{font-size:12px;font-weight:800}
+#result-stats strong{font-size:clamp(22px,6vw,31px);line-height:1.2;color:#a34f3c;font-variant-numeric:tabular-nums;text-shadow:0 1px #fff2cf;margin-top:3px}
+.result .dialog button.secondary{width:85%;margin:14px auto 0;border:2px solid #ffb8ac;outline:1px dashed #ffc5b480;outline-offset:-6px;border-radius:22px;background:linear-gradient(#f99c9e,#dd647a);color:#fff1d2;font-size:22px;font-weight:800;letter-spacing:3px;padding:11px;text-shadow:0 2px #ac4a58;box-shadow:inset 0 3px 4px #ffd1b5,0 5px 0 #873744,0 8px 12px #30152155}
+.defeat .dialog{background:radial-gradient(ellipse at top,#8c6870,#49323e 80%);border-color:#bfa2a1}
+.defeat .dialog h2{background:linear-gradient(#ddc0ad,#bb9390);border-color:#e6c8b5;color:#65444a;text-shadow:0 2px #f0d7c5;box-shadow:inset 0 3px #f9e1c7,0 5px #69434b}
+.defeat #result-emblem{color:#c3afc6;text-shadow:0 3px #694a69}
+@media(max-height:650px){.overlay.result{padding:7px}.result .dialog{padding:8px 10px 12px}#result-emblem{font-size:25px}.result .dialog small{margin:2px 0 6px}#result-art{height:26dvh}.result .dialog h2{font-size:22px;padding:7px}.result .dialog p{margin:8px 0}#result-stats{padding:6px 2px}.result .dialog button.secondary{margin-top:10px;padding:8px;font-size:19px}}
+
+/* Pause menu shares the result screen's dimensional stage styling. */
+.pause-menu{background:#321719b8;backdrop-filter:blur(7px);padding:22px}
+.pause-menu .dialog{position:relative;overflow:hidden;isolation:isolate;padding:25px 20px 23px;border:2px solid #f7c98f;border-radius:25px;background:radial-gradient(ellipse at 50% 0,#b86448,#71372f 85%);box-shadow:inset 0 0 20px #ffcf8540,0 7px 0 #472021,0 18px 40px #250e1480;color:#ffe9c7}
+.pause-menu .dialog:before{content:'';position:absolute;inset:0;z-index:-1;opacity:.09;background:repeating-conic-gradient(from -12deg at 50% 18%,#ffe7a4 0deg 12deg,transparent 12deg 26deg)}
+.pause-menu #result-emblem{display:grid;place-items:center;margin:0 auto 12px;width:60px;height:60px;border:2px solid #ffe4a6;border-radius:19px;background:linear-gradient(#ffdc89,#df9e4e);box-shadow:inset 0 3px 4px #fff1bf,0 5px 0 #8b472f,0 8px 18px #32141c55;color:#fff4d5;text-shadow:0 3px #b8783c;font-size:32px;font-weight:900}
+.pause-menu .dialog small{display:block;color:#ffd6ab;font-size:10px;letter-spacing:2px}
+.pause-menu .dialog h2{margin:18px -6px 15px;padding:13px 4px;border:2px solid #f8b386;border-radius:16px;background:linear-gradient(#eda17b,#cf705a);box-shadow:inset 0 3px 3px #ffd9ae,0 4px 0 #8c4235;color:#fff0d1;font-size:23px;letter-spacing:1px;text-shadow:0 2px #a8563e;transform:rotate(-2deg)}
+.pause-menu .dialog p{margin:18px 0 23px;color:#ffdfb7;font-size:13px;line-height:1.8}
+.pause-menu .dialog button{border:2px solid #ffb9ac;border-radius:20px;background:linear-gradient(#f69b9d,#db6379);box-shadow:inset 0 3px 4px #ffd0b9,0 5px 0 #873744,0 8px 12px #30152144;color:#fff1d5;font-size:18px;font-weight:800;text-shadow:0 2px #aa4c58;padding:13px 6px;outline:1px dashed #ffc9b780;outline-offset:-6px}
+.pause-menu .dialog button.secondary{margin-top:16px;background:linear-gradient(#ffe9c0,#edbd80);border-color:#ffe0ac;color:#855031;text-shadow:0 1px #fff0ca;box-shadow:inset 0 3px 4px #fff3d4,0 5px 0 #965536,0 8px 12px #30152144;outline-color:#c4925a70;font-size:16px;padding:11px 6px}
+.pause-menu .dialog button:focus-visible{outline:3px solid #fff0c5;outline-offset:3px}
+@media(max-height:650px){.pause-menu .dialog{padding:15px 16px 18px}.pause-menu #result-emblem{width:48px;height:48px;font-size:26px}.pause-menu .dialog h2{margin-top:12px;font-size:20px}.pause-menu .dialog p{margin:14px 0 18px}}
